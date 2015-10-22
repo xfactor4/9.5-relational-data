@@ -1,9 +1,21 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
 
-let collection;
+import Session from './models/session';
+import Recipe from './models/recipe';
+import RecipesCollection from './models/recipes-collection';
+
+let session, recipes;
 export default {
-  getCollection() {
-    return (collection = collection || new Backbone.Collection());
+  getSession(){
+    return (session = session || new Session())
+  },
+
+  getRecipesCollection() {
+    return (recipes = recipes || new RecipesCollection())
+  },
+
+  getNewRecipe() {
+    return new Recipe();
   }
 };

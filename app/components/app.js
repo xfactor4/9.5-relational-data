@@ -1,5 +1,5 @@
 import React from 'react';
-import { IndexLink } from 'react-router';
+import { Link, IndexLink } from 'react-router';
 
 var App = React.createClass({
   propTypes: {
@@ -15,6 +15,13 @@ var App = React.createClass({
               <h1><IndexLink to="/">Home</IndexLink></h1>
             </li>
           </ul>
+
+          <section className="top-bar-section">
+            {/* Left Nav Section */}
+            <ul className="left">
+              <li><Link to="/create">Create</Link></li>
+            </ul>
+          </section>
         </nav>
 
         {this.props.children}
