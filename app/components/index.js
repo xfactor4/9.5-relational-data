@@ -22,12 +22,13 @@ var Index = React.createClass({
   },
 
   render() {
+    var recipes = this.props.recipes.toJSON();
     return (
       <div>
         <h1>Index</h1>
         <ul>
-          {this.props.recipes.map((r) => {
-            return (<li key={r.id}>{r.get('name')}</li>);
+          {recipes.map((r) => {
+            return (<li key={r.objectId}>{r.name} - ({r.creator.username})</li>);
           })}
         </ul>
       </div>

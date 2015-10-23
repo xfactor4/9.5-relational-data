@@ -64,7 +64,8 @@ const RecipeForm = React.createClass({
     store.getRecipesCollection().create({
       name: this.refs.name.value,
       category: this.refs.category.value,
-      ingredients: this.state.ingredients
+      ingredients: this.state.ingredients,
+      creator: store.getSession().get('currentUser')
     }, {wait: true});
 
     this.refs.name.value = '';

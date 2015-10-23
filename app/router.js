@@ -9,7 +9,8 @@ import Login from './components/login';
 
 import store from './store';
 
-console.log(store.getFoodCollection());
+console.log(store);
+console.log(store.getRecipesCollection());
 
 function requireAuth(nextState, replaceState) {
   if( ! store.getSession().isAuthenticated() ) {
