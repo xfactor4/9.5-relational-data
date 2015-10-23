@@ -1,8 +1,9 @@
 import React from 'react';
-
 import store from '../store';
+import { History } from 'react-router';
 
 const IngredientInput = React.createClass({
+
   propTypes: {
     name: React.PropTypes.string,
     qty: React.PropTypes.number,
@@ -38,6 +39,8 @@ const RecipeForm = React.createClass({
     params: React.PropTypes.object
   },
 
+  mixins: [History],
+
   getInitialState() {
     return {
       recipe: store.getNewRecipe()
@@ -66,12 +69,13 @@ const RecipeForm = React.createClass({
 
     this.refs.name.value = '';
     this.refs.category.value = '';
+    this.history.pushState({}, '/');
   },
 
   handleAddIngredient(ingredient) {
-    this.setState({
-      ingredients: this.state.ingredients.concat([ingredient])
-    });
+    var ingredients = this.state.recipe.get('ingredients');
+    this.state.recipe.set('ingredients', ingredients.concat(ingredient));
+    this.forceUpdate();
   },
 
   render() {
