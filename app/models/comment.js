@@ -25,8 +25,8 @@ const Comment = Backbone.Model.extend({
   },
 
   parse(response) {
-    response.creator = new User(_.omit(response.creator, '__type', 'className'));
-    response.recipe = new Recipe(_.omit(response.recipe, '__type', 'className'));
+    response.creator = new User(_.omit(response.creator, '__type', 'className'), {parse: true});
+    response.recipe = new Recipe(_.omit(response.recipe, '__type', 'className'), {parse: true});
     return response;
   },
 

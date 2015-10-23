@@ -6,11 +6,9 @@ import App from './components/app';
 import Create from './components/create';
 import Index from './components/index';
 import Login from './components/login';
+import ShowRecipe from './components/show-recipe';
 
 import store from './store';
-
-console.log(store);
-console.log(store.getRecipesCollection());
 
 function requireAuth(nextState, replaceState) {
   if( ! store.getSession().isAuthenticated() ) {
@@ -29,6 +27,7 @@ ReactDOM.render((
     <Route path="/" component={App}>
       <IndexRoute component={Index} onEnter={requireAuth} />
       <Route path="create" component={Create} onEnter={requireAuth} />
+      <Route path="recipes/:id" component={ShowRecipe} onEnter={requireAuth} />
 
       <Route path="login" component={Login} onEnter={requireNotAuth} />
     </Route>

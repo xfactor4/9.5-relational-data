@@ -4,6 +4,15 @@ import _ from 'underscore';
 
 var Recipe = Backbone.Model.extend({
   idAttribute: 'objectId',
+  urlRoot: "https://api.parse.com/1/classes/Recipe",
+
+  url: function() {
+    var base = _.result(this, 'urlRoot');
+    if (this.isNew()) return base;
+    var id = this.get(this.idAttribute);
+    return base.replace(/[^\/]$/, '$&/') + encodeURIComponent(id) + "?include=creator";
+  },
+
   defaults() {
     return {
       ingredients: [],
@@ -12,7 +21,7 @@ var Recipe = Backbone.Model.extend({
   },
 
   parse(response) {
-    response.creator = new User(_.omit(response.creator, '__type', 'className'));
+    response.creator = new User(_.omit(response.creator, '__type', 'className'), {parse: true});
     return response;
   },
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import store from '../store';
+import { Link } from 'react-router';
 
 var Index = React.createClass({
   propTypes: {
@@ -28,7 +29,7 @@ var Index = React.createClass({
         <h1>Index</h1>
         <ul>
           {recipes.map((r) => {
-            return (<li key={r.objectId}>{r.name} - ({r.creator.username})</li>);
+            return (<li key={r.objectId}><Link to={`/recipes/${r.objectId}`}>{r.name} - ({r.creator.username})</Link></li>);
           })}
         </ul>
       </div>
