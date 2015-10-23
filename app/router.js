@@ -9,6 +9,8 @@ import Login from './components/login';
 
 import store from './store';
 
+console.log(store.getFoodCollection());
+
 function requireAuth(nextState, replaceState) {
   if( ! store.getSession().isAuthenticated() ) {
     replaceState({ nextPathname: nextState.location.pathname }, '/login');
