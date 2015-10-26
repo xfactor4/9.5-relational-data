@@ -7,6 +7,14 @@ var App = React.createClass({
     children: React.PropTypes.node
   },
 
+  componentWillMount() {
+    store.getSession().on('change', this.forceUpdate.bind(this, null), this);
+  },
+
+  componentWillUnmount() {
+    store.getSession().off('change', null, this);
+  },
+
   handleLogout(e) {
     e.preventDefault();
     session.invalidate();

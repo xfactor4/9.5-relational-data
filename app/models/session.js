@@ -23,6 +23,7 @@ const Session = Backbone.Model.extend({
         this.set('currentUser', user);
         this.trigger('authenticationSucceeded');
         return user.fetch().then(() => {
+          this.set('currentUser', user.clone());
           return true;
         }, () => false);
       } else {
