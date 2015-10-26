@@ -32,21 +32,24 @@ const Session = Backbone.Model.extend({
         return dfd.promise();
       }
     },
+
     restore() {
-      var token = localStorage.getItem('parse-session-token')
+      var token = localStorage.getItem('parse-session-token');
       if (token) {
         this.authenticate({
           sessionToken: token
-        })
+        });
       }
     },
+
     invalidate() {
       localStorage.removeItem('parse-session-token');
-      this.trigger('invalidationSucceeded')
+      this.trigger('invalidationSucceeded');
       window.location.reload();
     },
+
     isAuthenticated() {
-      return !!this.get('currentUser')
+      return !!this.get('currentUser');
     }
 });
 export default Session;
