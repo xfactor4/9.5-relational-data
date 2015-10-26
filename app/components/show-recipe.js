@@ -9,12 +9,12 @@ const ShowRecipe = React.createClass({
   },
 
   componentWillMount() {
-    var recipeId = this.props.params.id;
+    let recipeId = this.props.params.id;
 
-    var recipe = new Recipe({objectId: recipeId});
+    let recipe = new Recipe({objectId: recipeId});
     recipe.fetch().then(() => this.setState({recipe: recipe}));
 
-    var comments = new CommentsCollection({recipeId: recipeId});
+    let comments = new CommentsCollection({recipeId: recipeId});
     comments.fetch().then(() => this.setState({comments: comments}));
   },
 
