@@ -19,6 +19,7 @@ const Session = Backbone.Model.extend({
         }, () => false);
       } else if (options.sessionToken) {
         // I'm authenticating with a sessionToken
+        localStorage.setItem('parse-session-token', options.sessionToken);
         var user = new User(options);
         this.set('currentUser', user);
         this.trigger('authenticationSucceeded');
